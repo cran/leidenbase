@@ -3522,8 +3522,6 @@ fi
 $as_echo "#define INTERNAL_SUITESPARSE 1" >>confdefs.h
 
 
-# Tricky check for C++ compiler, because Autoconf has a weird bug:
-# http://lists.gnu.org/archive/html/autoconf/2006-03/msg00067.html
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -4390,15 +4388,15 @@ fi
 
 
 for ac_header in  \
-		   net/if.h \
-		   netinet/in.h \
-		   net/if_dl.h \
-		   sys/sockio.h \
-		   sys/un.h \
-		   sys/socket.h \
-		   sys/ioctl.h \
-		   sys/time.h \
-		   sys/file.h \
+           net/if.h \
+           netinet/in.h \
+           net/if_dl.h \
+           sys/sockio.h \
+           sys/un.h \
+           sys/socket.h \
+           sys/ioctl.h \
+           sys/time.h \
+           sys/file.h \
 
 do :
   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
@@ -4414,7 +4412,7 @@ done
 
 
 ac_fn_c_check_member "$LINENO" "struct sockaddr" "sa_len" "ac_cv_member_struct_sockaddr_sa_len" "#include <sys/types.h>
-	 #include <sys/socket.h>
+         #include <sys/socket.h>
 "
 if test "x$ac_cv_member_struct_sockaddr_sa_len" = xyes; then :
 
