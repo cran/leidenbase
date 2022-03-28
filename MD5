@@ -1,15 +1,14 @@
-5e82a59aee08455e9d2c7e4d0f14fac2 *DESCRIPTION
+a20c160bb8845c41200ab050ec3e51f9 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 b392d8dfd6eb0326d318beeb69cfdfd9 *NEWS.md
 044e02568ae4d5485c624ff579dad964 *R/leidenbase.R
-f8f27b04b6ef9b724cbd47f50c97d844 *README.md
-088ae819ef6a8325b0626d0de00d8bd4 *build/vignette.rds
-99d30cb297f992b506bf3c384eb93454 *configure
-e7de1761153f47cdb8e58353a456ece0 *configure.ac
-7096369d4b7b0005ef0e4132650574e3 *configure.win
+2b14e455ce610119f388f85563487d81 *build/vignette.rds
+639b1b690acf7710c9faf698011124bd *configure
+1531d490f51d64e8a6397af0e7923a10 *configure.ac
+c1249abc0fc9b07b70522d5808e15449 *configure.win
 f11584f41ffa991c4a79a3a261bbefc3 *inst/doc/leidenbase.R
-a9e653cfd9a15bbf043223382c78ee6b *inst/doc/leidenbase.Rmd
-d61d68b6aa240db8b9ecf3d8405f6bce *inst/doc/leidenbase.html
+a7a20c17b8bd529cf8d0093aed18b87d *inst/doc/leidenbase.Rmd
+8b5b39fe7770d482e5921d989b4a9c31 *inst/doc/leidenbase.html
 1cf7b57f6bd5d1c985f7a54a9eb3fe8b *inst/testdata/expected_values.txt
 fe47c49467b20821b5af59eb9b906354 *inst/testdata/igraph_n1500_edgelist.txt.gz
 13fe4e344ab07f7e5a5afc24458995c6 *inst/testdata/test01_file01.txt
@@ -79,7 +78,7 @@ e9b2be5ad0056f588187cf504cf60764 *src/rigraph/src/SuiteSparse_config/SuiteSparse
 917bb33fe32383364ed1174ebf623868 *src/rigraph/src/SuiteSparse_config/SuiteSparse_config.mk
 0ea19089dfd660f6a712ec073f2a24dd *src/rigraph/src/SuiteSparse_config/SuiteSparse_config_GPU.mk
 293d047331651328bfd9a3899c45e915 *src/rigraph/src/SuiteSparse_config/SuiteSparse_config_Mac.mk
-1ac8cd8351cde3cc83db09bd5c42d4f6 *src/rigraph/src/adjlist.c
+750bf76590a942ebfdde418fdd69f36e *src/rigraph/src/adjlist.c
 4c571b05b21a153bf3c3d19a3954dced *src/rigraph/src/arpack.c
 4221ca433cc7eff3f4f4504d0c5114f1 *src/rigraph/src/array.c
 44f64db0ad9bb299c590e3cc2a64ddd8 *src/rigraph/src/array.pmt
@@ -293,7 +292,7 @@ acf4f0ca16d707a39b298610199c4bdb *src/rigraph/src/gengraph_mr-connected.cpp
 2a84a87cc8cda864da7b62bf54a62347 *src/rigraph/src/gengraph_random.cpp
 6e55e56533f526354c218dec2b02f310 *src/rigraph/src/gengraph_random.h
 f36f13a28a6d343a61f078b6076a3cb6 *src/rigraph/src/gengraph_vertex_cover.h
-01b1a7b6fd02df9b1d42354166da0b78 *src/rigraph/src/glet.c
+4833a1d4a1b4191c52826f05d122fcf1 *src/rigraph/src/glet.c
 772003884e8c93c95a47b228ac56b88b *src/rigraph/src/glpk_support.c
 b4a2fe86842f32d319cbb71e38305765 *src/rigraph/src/gml_tree.c
 5f7cf7a0ed1dfbef8f980951e235be32 *src/rigraph/src/hacks.c
@@ -604,4 +603,4 @@ cda146436584227d239e5576f6ba09fe *tests/cpp_tests/leidenalg_test.py
 d309591e6da8bc3463679c64c6f2fba5 *tests/cpp_tests/node_sizes.txt
 8d1633a13e6d2461f329344da28fa79e *tests/testthat.R
 2c3315e8fe24c37502d272cb0768b21f *tests/testthat/test-leidenbase.R
-a9e653cfd9a15bbf043223382c78ee6b *vignettes/leidenbase.Rmd
+a7a20c17b8bd529cf8d0093aed18b87d *vignettes/leidenbase.Rmd
