@@ -1,14 +1,14 @@
-a20c160bb8845c41200ab050ec3e51f9 *DESCRIPTION
+58d405f7467180f34c0f80aeddc78043 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 b392d8dfd6eb0326d318beeb69cfdfd9 *NEWS.md
 044e02568ae4d5485c624ff579dad964 *R/leidenbase.R
-2b14e455ce610119f388f85563487d81 *build/vignette.rds
+611499e7dd5770c45a7becc8edbf5f8d *build/vignette.rds
 639b1b690acf7710c9faf698011124bd *configure
 1531d490f51d64e8a6397af0e7923a10 *configure.ac
 c1249abc0fc9b07b70522d5808e15449 *configure.win
 f11584f41ffa991c4a79a3a261bbefc3 *inst/doc/leidenbase.R
 a7a20c17b8bd529cf8d0093aed18b87d *inst/doc/leidenbase.Rmd
-8b5b39fe7770d482e5921d989b4a9c31 *inst/doc/leidenbase.html
+952375973772db7f73bdc1b5203fb650 *inst/doc/leidenbase.html
 1cf7b57f6bd5d1c985f7a54a9eb3fe8b *inst/testdata/expected_values.txt
 fe47c49467b20821b5af59eb9b906354 *inst/testdata/igraph_n1500_edgelist.txt.gz
 13fe4e344ab07f7e5a5afc24458995c6 *inst/testdata/test01_file01.txt
@@ -508,7 +508,7 @@ f9a82bcf4a3a750ab39528bc8d304053 *src/rigraph/src/qsort_r.c
 fbac62447ee31494b588c770d3500bf2 *src/rigraph/src/random_walk.c
 4ccd736ca6f4a1550b0d78c861a29ecb *src/rigraph/src/rinterface.c
 55c344dc2daf18e33b5e11a248013759 *src/rigraph/src/rinterface.h
-9bd640fc620ccde39a84b4f481c9a267 *src/rigraph/src/rinterface_extra.c
+a39366a6d277975092d38136e454d0bc *src/rigraph/src/rinterface_extra.c
 031cabd73e8ddcad38e188ffebcbf79f *src/rigraph/src/sbm.c
 ae35bfda5215b00e36d080163470775b *src/rigraph/src/scan.c
 46331d3e3f8012622d33856060ea7760 *src/rigraph/src/scg.c
