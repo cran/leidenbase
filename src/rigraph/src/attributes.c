@@ -278,7 +278,7 @@ igraph_i_set_attribute_table(const igraph_attribute_table_t * table) {
     return old;
 }
 
-igraph_bool_t igraph_has_attribute_table() {
+igraph_bool_t igraph_has_attribute_table(void) {
     return igraph_i_attribute_table != 0;
 }
 

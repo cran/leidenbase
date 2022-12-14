@@ -94,11 +94,11 @@ int igraph_i_read_network(const igraph_t *graph,
         }
 
         node1 = net->node_list->Get(i1 - 1);
-        sprintf(name, "%li", i1);
+        snprintf(name, sizeof(name) / sizeof(name[0]), "%li", i1);
         node1->Set_Name(name);
 
         node2 = net->node_list->Get(i2 - 1);
-        sprintf(name, "%li", i2);
+        snprintf(name, sizeof(name) / sizeof(name[0]), "%li", i2);
         node2->Set_Name(name);
 
         node1->Connect_To(node2, Links);

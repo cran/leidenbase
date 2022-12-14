@@ -623,7 +623,7 @@ IGRAPH_THREAD_LOCAL igraph_rng_t igraph_i_rng_default = {
  * \sa igraph_rng_set_default()
  */
 
-igraph_rng_t *igraph_rng_default() {
+igraph_rng_t *igraph_rng_default(void) {
     return &igraph_i_rng_default;
 }
 

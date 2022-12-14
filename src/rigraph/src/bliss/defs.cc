@@ -30,8 +30,8 @@ fatal_error(const char* fmt, ...)
   char buffer[1024];
   va_list ap;
   va_start(ap, fmt);
-  sprintf(buffer, "Bliss fatal error: ");
-  vsprintf(buffer, fmt, ap);
+  snprintf(buffer, 1024, "Bliss fatal error: ");
+  vsnprintf(buffer, 1024, fmt, ap);
   throw std::runtime_error(buffer);
   va_end(ap);
   exit(1);

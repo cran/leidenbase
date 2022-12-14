@@ -18,7 +18,7 @@ dnl We acknowledge Gabor Csardi's work on the R/C igraph
 dnl distributions and for making the source code publicly 
 dnl and freely available.
 dnl
-AC_INIT([leidenbase], 0.1.11)
+AC_INIT([leidenbase], 0.1.14)
 AC_CONFIG_SRCDIR(src/leidenFindPartition.cpp)
 AC_CONFIG_AUX_DIR(src/config_aux_dir)
 
