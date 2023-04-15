@@ -60,12 +60,12 @@
 #include <cstdint>
 #include <R.h>
 #include <Rinternals.h>
+#include <R_ext/Rdynload.h>
 #include <igraph.h>
 #include "igraph_rinterface.h"
 #include "leidenFindPartition.h"
 
 #define DEBUG   0
-
 
 extern igraph_error_handler_t R_igraph_myhandler;
 
@@ -576,4 +576,15 @@ std::vector < size_t >* xsetNodeSizes( SEXP node_sizes, size_t numVertex, int *f
   return ( pnodeSizes );
 }
 
+static const R_CallMethodDef CallMethods[] = {
+    {"_leiden_find_partition", (DL_FUNC) &_leiden_find_partition, 8},
+
+    {NULL, NULL, 0}
+};
+
+void R_init_leidenbase(DllInfo *info)
+{
+   R_registerRoutines(info, NULL, CallMethods, NULL, NULL);
+   R_useDynamicSymbols(info, FALSE);
+}
 

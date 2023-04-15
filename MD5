@@ -1,11 +1,11 @@
-d28d2281fcc00c55fe76e5f57f64388e *DESCRIPTION
+f56bd94154b456cebdfb5b6b352a39f4 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 f342adf5ff75c195432682097fafd707 *NEWS.md
 044e02568ae4d5485c624ff579dad964 *R/leidenbase.R
 a730eefb11e0a69e7cd8f1158eb8e32b *build/vignette.rds
-7de0c0eab121f0cad6e1bed6b92c0961 *configure
-cdb35532ef010c52cb1c4334653d4c75 *configure.ac
-c00b5f59797fb1e18947cf0a7e2b91f8 *configure.win
+fa18237a7e9af425480f352f6c521a4a *configure
+e63afb1a2d83cae791d5c3051fc49083 *configure.ac
+7a514e9bfe2b90963f6b5e75f2566f85 *configure.win
 f11584f41ffa991c4a79a3a261bbefc3 *inst/doc/leidenbase.R
 a7a20c17b8bd529cf8d0093aed18b87d *inst/doc/leidenbase.Rmd
 638ec818834f5663a897bf2c6c061c39 *inst/doc/leidenbase.html
@@ -31,7 +31,7 @@ bc566550d05b1ffd9a53f55614788d0c *src/config_aux_dir/install-sh
 ef770702131c7b8de86dad9b0a206190 *src/igraph_rinterface.h
 69551295985a22a92aa534e07363269c *src/leidenFindPartition.cpp
 bd4ac93aff3daedea076dd25efd74ff5 *src/leidenFindPartition.h
-a156f8dc549808fb47241388b9336021 *src/leidenFindPartitionR2C.cpp
+6333509587c8d3f3630f9145f9f6f59f *src/leidenFindPartitionR2C.cpp
 84dcc94da3adb52b53ae4fa38fe49e5d *src/leidenalg/LICENSE
 57533661e5a7fec0f63dfcccdd2a2f65 *src/leidenalg/include/CPMVertexPartition.h
 706035af477f6d7596c82280d920e891 *src/leidenalg/include/GraphHelper.h
