@@ -28,22 +28,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
 });
 </script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -68,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -102,7 +87,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +100,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -361,62 +346,70 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
-<p>Leidenbase consists of R and C++ interfaces for the basic community detection functions of Vincent Traags’s Leidenalg package. The Leidenalg algorithm is described in the article</p>
-<p>Traag, V.A., Waltman. L., Van Eck, N.-J. (2018). <em>From Louvain to Leiden: guaranteeing well-connected communities.</em> Scientific reports, 9(1), 5233. <a href="http://dx.doi.org/10.1038/s41598-019-41695-z">10.1038/s41598-019-41695-z</a></p>
-<p>Detailed information describing use of the leiden algorithm is available at</p>
+<p>Leidenbase consists of R and C++ interfaces for the basic community
+detection functions of Vincent Traags’s Leidenalg package. The Leidenalg
+algorithm is described in the article</p>
+<p>Traag, V.A., Waltman. L., Van Eck, N.-J. (2018). <em>From Louvain to
+Leiden: guaranteeing well-connected communities.</em> Scientific
+reports, 9(1), 5233. <a href="http://dx.doi.org/10.1038/s41598-019-41695-z">10.1038/s41598-019-41695-z</a></p>
+<p>Detailed information describing use of the leiden algorithm is
+available at</p>
 <p><a href="https://leidenalg.readthedocs.io/en/latest/" class="uri">https://leidenalg.readthedocs.io/en/latest/</a></p>
 <p>leidenalg source code is available at</p>
 <p><a href="https://github.com/vtraag/leidenalg" class="uri">https://github.com/vtraag/leidenalg</a></p>
 </div>
 <div id="r-interface" class="section level3">
 <h3>R Interface</h3>
-<p>The R interface consists of the <code>leiden_find_partition</code> function</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">leiden_find_partition</span>( igraph, <span class="dt">partition_type =</span> <span class="kw">c</span>(<span class="st">&quot;CPMVertexPartition&quot;</span>, <span class="st">&quot;ModularityVertexPartition&quot;</span>, <span class="st">&quot;RBConfigurationVertexPartition&quot;</span>, <span class="st">&quot;RBERVertexPartition&quot;</span>, <span class="st">&quot;SignificanceVertexPartition&quot;</span>, <span class="st">&quot;SurpriseVertexPartition&quot;</span>), <span class="dt">initial_membership =</span> <span class="ot">NULL</span>, <span class="dt">edge_weights =</span> <span class="ot">NULL</span>, <span class="dt">node_sizes =</span> <span class="ot">NULL</span>, <span class="dt">seed =</span> <span class="ot">NULL</span>, <span class="dt">resolution_parameter =</span> <span class="fl">0.1</span>, <span class="dt">num_iter =</span> <span class="dv">2</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span> )</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>Arguments<span class="op">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="st">  </span>igraph<span class="op">:</span><span class="st"> </span>R igraph graph.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>  partition_type<span class="op">:</span><span class="st"> </span>String partition type name. Default is CPMVertexParition.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>  initial_membership<span class="op">:</span><span class="st"> </span>Numeric vector of initial membership assignments of nodes.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>                      These are <span class="dv">1</span><span class="op">-</span>based indices. Default is one community per</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>                      node.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>  edge_weights<span class="op">:</span><span class="st"> </span>Numeric vector of edge weights. Default is <span class="fl">1.0</span> <span class="cf">for</span> all edges.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>  node_sizes<span class="op">:</span><span class="st"> </span>Numeric vector of node sizes. Default is <span class="dv">1</span> <span class="cf">for</span> all nodes.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>  seed<span class="op">:</span><span class="st"> </span>Numeric random number generator seed. The seed value must be</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>        either <span class="ot">NULL</span> <span class="cf">for</span> random seed values or greater than <span class="dv">0</span> <span class="cf">for</span> a</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>        fixed seed value. Default is NULL.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>  resolution_parameter<span class="op">:</span><span class="st"> </span>Numeric resolution parameter. The value must be</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>                        greater than <span class="dv">0</span>.<span class="fl">0.</span> Default is <span class="dv">0</span>.<span class="fl">1.</span> The</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>                        resolution_parameter is ignored</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>                        <span class="cf">for</span> the partition_types ModularityVertexPartition,   </span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>                        SignificanceVertexPartition, and</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>                        SurpriseVertexPartition.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>  num_iter<span class="op">:</span><span class="st"> </span>Numeric number of iterations. Default is <span class="fl">2.</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>  verbose<span class="op">:</span><span class="st"> </span>A logic flag to determine whether or not we should print run</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>           diagnostics.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>           </span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>Value<span class="op">:</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a><span class="st">   </span>A named list consisting of a numeric vector where each value is the community</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>   to which the node <span class="kw">belongs</span> (<span class="dv">1</span><span class="op">-</span>based indices), a numeric quality value, a</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>   numeric modularity, a numeric significance, a numeric vector of edge weights</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>   within each community, a numeric vector of edge weights from each community,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a>   a numeric vector of edge weights to each community, and total edge weight.</span></code></pre></div>
-<p>In order to use <code>leiden_find_partition</code>, create or load an igraph graph and then call <code>leiden_find_partition</code>. For example,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(igraph)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>fpath &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&#39;testdata&#39;</span>, <span class="st">&#39;igraph_n1500_edgelist.txt.gz&#39;</span>, <span class="dt">package=</span><span class="st">&#39;leidenbase&#39;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>zfp &lt;-<span class="st"> </span><span class="kw">gzfile</span>(fpath)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>igraph &lt;-<span class="st"> </span><span class="kw">read_graph</span>(<span class="dt">file =</span> zfp, <span class="dt">format=</span><span class="st">&#39;edgelist&#39;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>res &lt;-<span class="st"> </span><span class="kw">leiden_find_partition</span>(igraph, <span class="dt">partition_type =</span> <span class="st">&#39;CPMVertexPartition&#39;</span>, <span class="dt">seed =</span> <span class="dv">123456</span>, <span class="dt">resolution_parameter =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p>The R interface consists of the <code>leiden_find_partition</code>
+function</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leiden_find_partition</span>( igraph, <span class="at">partition_type =</span> <span class="fu">c</span>(<span class="st">&quot;CPMVertexPartition&quot;</span>, <span class="st">&quot;ModularityVertexPartition&quot;</span>, <span class="st">&quot;RBConfigurationVertexPartition&quot;</span>, <span class="st">&quot;RBERVertexPartition&quot;</span>, <span class="st">&quot;SignificanceVertexPartition&quot;</span>, <span class="st">&quot;SurpriseVertexPartition&quot;</span>), <span class="at">initial_membership =</span> <span class="cn">NULL</span>, <span class="at">edge_weights =</span> <span class="cn">NULL</span>, <span class="at">node_sizes =</span> <span class="cn">NULL</span>, <span class="at">seed =</span> <span class="cn">NULL</span>, <span class="at">resolution_parameter =</span> <span class="fl">0.1</span>, <span class="at">num_iter =</span> <span class="dv">2</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span> )</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Arguments<span class="sc">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  igraph<span class="sc">:</span> R igraph graph.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  partition_type<span class="sc">:</span> String partition type name. Default is CPMVertexParition.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  initial_membership<span class="sc">:</span> Numeric vector of initial membership assignments of nodes.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                      These are <span class="dv">1</span><span class="sc">-</span>based indices. Default is one community per</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                      node.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  edge_weights<span class="sc">:</span> Numeric vector of edge weights. Default is <span class="fl">1.0</span> <span class="cf">for</span> all edges.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  node_sizes<span class="sc">:</span> Numeric vector of node sizes. Default is <span class="dv">1</span> <span class="cf">for</span> all nodes.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  seed<span class="sc">:</span> Numeric random number generator seed. The seed value must be</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        either <span class="cn">NULL</span> <span class="cf">for</span> random seed values or greater than <span class="dv">0</span> <span class="cf">for</span> a</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        fixed seed value. Default is NULL.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  resolution_parameter<span class="sc">:</span> Numeric resolution parameter. The value must be</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                        greater than <span class="dv">0</span>.<span class="fl">0.</span> Default is <span class="dv">0</span>.<span class="fl">1.</span> The</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                        resolution_parameter is ignored</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">for</span> the partition_types ModularityVertexPartition,   </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                        SignificanceVertexPartition, and</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                        SurpriseVertexPartition.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  num_iter<span class="sc">:</span> Numeric number of iterations. Default is <span class="fl">2.</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  verbose<span class="sc">:</span> A logic flag to determine whether or not we should print run</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>           diagnostics.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Value<span class="sc">:</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>   A named list consisting of a numeric vector where each value is the community</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>   to which the node <span class="fu">belongs</span> (<span class="dv">1</span><span class="sc">-</span>based indices), a numeric quality value, a</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>   numeric modularity, a numeric significance, a numeric vector of edge weights</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>   within each community, a numeric vector of edge weights from each community,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>   a numeric vector of edge weights to each community, and total edge weight.</span></code></pre></div>
+<p>In order to use <code>leiden_find_partition</code>, create or load an
+igraph graph and then call <code>leiden_find_partition</code>. For
+example,</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fpath <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&#39;testdata&#39;</span>, <span class="st">&#39;igraph_n1500_edgelist.txt.gz&#39;</span>, <span class="at">package=</span><span class="st">&#39;leidenbase&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>zfp <span class="ot">&lt;-</span> <span class="fu">gzfile</span>(fpath)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>igraph <span class="ot">&lt;-</span> <span class="fu">read_graph</span>(<span class="at">file =</span> zfp, <span class="at">format=</span><span class="st">&#39;edgelist&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">leiden_find_partition</span>(igraph, <span class="at">partition_type =</span> <span class="st">&#39;CPMVertexPartition&#39;</span>, <span class="at">seed =</span> <span class="dv">123456</span>, <span class="at">resolution_parameter =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><code>leiden_find_partition</code> returns</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">str</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span></code></pre></div>
 <pre><code>## List of 8
 ##  $ membership                  : int [1:1500] 22 41 2 30 39 12 40 31 30 4 ...
 ##  $ quality                     : num 11835
@@ -426,73 +419,81 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  $ edge_weight_from_community  : num [1:115] 1786 2021 2069 1576 1742 ...
 ##  $ edge_weight_to_community    : num [1:115] 1786 2021 2069 1576 1742 ...
 ##  $ total_edge_weight           : num 61636</code></pre>
-<p>The membership vector consists of the community value for each node. For example,</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">head</span>(res[[<span class="st">&#39;membership&#39;</span>]])</span></code></pre></div>
+<p>The membership vector consists of the community value for each node.
+For example,</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res[[<span class="st">&#39;membership&#39;</span>]])</span></code></pre></div>
 <pre><code>## [1] 22 41  2 30 39 12</code></pre>
 <p>The nodes that belong to community 1 are</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">which</span>(res[[<span class="st">&#39;membership&#39;</span>]]<span class="op">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(res[[<span class="st">&#39;membership&#39;</span>]]<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1]   33   35   41  116  140  151  172  178  208  214  238  308  367  440  454
 ## [16]  496  745  814  834  836  849  854  860  869  870  927  937 1042 1062 1104
 ## [31] 1111 1139 1238 1248 1263 1277 1297 1323 1348 1377 1382 1407 1483</code></pre>
 <p>The first three communities are</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="co"># lim1 &lt;- max(res$membership)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>lim1 &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="kw">seq</span>(lim1)) {</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  <span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&#39;Community &#39;</span>, i, <span class="st">&#39;:&#39;</span>))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="kw">which</span>(res[[<span class="st">&#39;membership&#39;</span>]]<span class="op">==</span>i))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    <span class="kw">cat</span>(<span class="st">&#39; &#39;</span>, j)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>  <span class="kw">cat</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lim1 &lt;- max(res$membership)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lim1 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="fu">seq</span>(lim1)) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&#39;Community &#39;</span>, i, <span class="st">&#39;:&#39;</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">which</span>(res[[<span class="st">&#39;membership&#39;</span>]]<span class="sc">==</span>i))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&#39; &#39;</span>, j)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Community 1:  33  35  41  116  140  151  172  178  208  214  238  308  367  440  454  496  745  814  834  836  849  854  860  869  870  927  937  1042  1062  1104  1111  1139  1238  1248  1263  1277  1297  1323  1348  1377  1382  1407  1483
 ## Community 2:  3  94  96  112  127  154  195  232  248  283  297  363  385  451  455  464  517  565  671  797  802  839  971  976  1002  1037  1051  1106  1117  1120  1123  1195  1249  1257  1281  1283  1355  1395  1397  1479
 ## Community 3:  168  179  220  320  327  351  417  419  423  509  594  618  623  645  733  778  801  887  929  959  998  1011  1016  1088  1147  1155  1168  1201  1206  1258  1269  1290  1295  1312  1347  1389  1427  1432  1480</code></pre>
 </div>
 <div id="cc-interface" class="section level3">
 <h3>C/C++ Interface</h3>
-<p>The C/C++ interface consists of the <code>leidenFindPartition</code> function</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="dt">int</span> leidenFindPartition( <span class="dt">igraph_t</span> *pigraph,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>                           <span class="bu">std::</span>string <span class="at">const</span> partitionType,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">size_t</span> &gt; <span class="at">const</span> *pinitialMembership,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">double</span> &gt; <span class="at">const</span> *pedgeWeights,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">size_t</span> &gt; <span class="at">const</span> *pnodeSizes,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>                           <span class="dt">size_t</span> seed,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>                           <span class="dt">double</span> resolutionParameter,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>                           <span class="bu">std::</span>int32_t numIter,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">size_t</span> &gt; *pmembership,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">double</span> &gt; *pweightInCommunity,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">double</span> &gt; *pweightFromCommunity,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>                           <span class="bu">std::</span>vector &lt; <span class="dt">double</span> &gt; *pweightToCommunity,</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>                           <span class="dt">double</span> *pweightTotal,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a>                           <span class="dt">double</span> *pquality,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a>                           <span class="dt">double</span> *pmodularity,</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true"></a>                           <span class="dt">double</span> *psignificance,</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true"></a>                           <span class="dt">int</span> *pstatus )</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true"></a>Parameters:</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true"></a></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true"></a>  igraph: pointer to <span class="dt">igraph_t</span> graph</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true"></a>  partitionType         partition type used <span class="cf">for</span> optimization</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true"></a>  initialMembership     vector of initial membership assignments of nodes (NULL</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true"></a>                        <span class="cf">for</span> <span class="cf">default</span> of one community per node)</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true"></a>  edgeWeights           vector of weights of edges (NULL <span class="cf">for</span> <span class="cf">default</span> of <span class="fl">1.0</span>)</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true"></a>  nodeSizes             vector of node sizes (NULL <span class="cf">for</span> <span class="cf">default</span> of <span class="dv">1</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true"></a>  seed                  random number generator seed (<span class="dv">0</span>=random seed)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true"></a>  resolutionParameter   resolution parameter</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true"></a>  numIter               number of iterations</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true"></a>  pmembership           vector of node membership assignments</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true"></a>  pweightInCommunity    vector of edge weights within community</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true"></a>  pweightFromCommunity  vector of edge weights from community</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true"></a>  pweightToCommunity    vector of edge weights to community</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true"></a>  pweightTotal          total edge weights</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true"></a>  pquality              partition quality</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true"></a>  pmodularity           partition modularity</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true"></a>  psignificance         partition significance</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true"></a>  pstatus               function status (<span class="dv">0</span>=success; -<span class="dv">1</span>=failure)</span></code></pre></div>
+<p>The C/C++ interface consists of the <code>leidenFindPartition</code>
+function</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> leidenFindPartition<span class="op">(</span> <span class="dt">igraph_t</span> <span class="op">*</span>pigraph<span class="op">,</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>string<span class="op"> </span><span class="at">const</span> partitionType<span class="op">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">size_t</span> <span class="op">&gt;</span> <span class="at">const</span> <span class="op">*</span>pinitialMembership<span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">double</span> <span class="op">&gt;</span> <span class="at">const</span> <span class="op">*</span>pedgeWeights<span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">size_t</span> <span class="op">&gt;</span> <span class="at">const</span> <span class="op">*</span>pnodeSizes<span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">size_t</span> seed<span class="op">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">double</span> resolutionParameter<span class="op">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>int32_t<span class="op"> </span>numIter<span class="op">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">size_t</span> <span class="op">&gt;</span> <span class="op">*</span>pmembership<span class="op">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">double</span> <span class="op">&gt;</span> <span class="op">*</span>pweightInCommunity<span class="op">,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">double</span> <span class="op">&gt;</span> <span class="op">*</span>pweightFromCommunity<span class="op">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                           <span class="bu">std::</span>vector<span class="op"> &lt;</span> <span class="dt">double</span> <span class="op">&gt;</span> <span class="op">*</span>pweightToCommunity<span class="op">,</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">double</span> <span class="op">*</span>pweightTotal<span class="op">,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">double</span> <span class="op">*</span>pquality<span class="op">,</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">double</span> <span class="op">*</span>pmodularity<span class="op">,</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">double</span> <span class="op">*</span>psignificance<span class="op">,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">int</span> <span class="op">*</span>pstatus <span class="op">)</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>Parameters<span class="op">:</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  igraph<span class="op">:</span> pointer to <span class="dt">igraph_t</span> graph</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  partitionType         partition type used <span class="cf">for</span> optimization</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  initialMembership     vector of initial membership assignments of nodes <span class="op">(</span>NULL</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">for</span> <span class="cf">default</span> of one community per node<span class="op">)</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  edgeWeights           vector of weights of edges <span class="op">(</span>NULL <span class="cf">for</span> <span class="cf">default</span> of <span class="fl">1.0</span><span class="op">)</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  nodeSizes             vector of node sizes <span class="op">(</span>NULL <span class="cf">for</span> <span class="cf">default</span> of <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  seed                  random number generator seed <span class="op">(</span><span class="dv">0</span><span class="op">=</span>random seed<span class="op">)</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  resolutionParameter   resolution parameter</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  numIter               number of iterations</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  pmembership           vector of node membership assignments</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  pweightInCommunity    vector of edge weights within community</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  pweightFromCommunity  vector of edge weights from community</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  pweightToCommunity    vector of edge weights to community</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  pweightTotal          total edge weights</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  pquality              partition quality</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  pmodularity           partition modularity</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  psignificance         partition significance</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  pstatus               function status <span class="op">(</span><span class="dv">0</span><span class="op">=</span>success<span class="op">;</span> <span class="op">-</span><span class="dv">1</span><span class="op">=</span>failure<span class="op">)</span></span></code></pre></div>
 <p>Notes for the C/C++ interface:</p>
 <ul>
-<li>Edit leidenFindPartition.cpp to set the preprocessor definition <code>R_INTERFACE</code> to 0.</li>
-<li>The resolution parameter is ignored for the partition types ModularityVertexPartition, SignificanceVertexPartition, and SurpriseVertexPartition</li>
-<li>To use the <code>leidenFindPartition</code> function, compile and link to the files src/leidenFindPartition.(cpp|h), src/leidenalg/src/*.cpp, and src/leidenalg/include/*.h and a C igraph object library.</li>
+<li>Edit leidenFindPartition.cpp to set the preprocessor definition
+<code>R_INTERFACE</code> to 0.</li>
+<li>The resolution parameter is ignored for the partition types
+ModularityVertexPartition, SignificanceVertexPartition, and
+SurpriseVertexPartition</li>
+<li>To use the <code>leidenFindPartition</code> function, compile and
+link to the files src/leidenFindPartition.(cpp|h),
+src/leidenalg/src/*.cpp, and src/leidenalg/include/*.h and a C igraph
+object library.</li>
 </ul>
 </div>
 
