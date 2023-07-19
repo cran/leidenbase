@@ -1,6 +1,6 @@
-c7971fd1b94ecea77759027d4450dc30 *DESCRIPTION
+e78e1b55c8e30f6c33d27103cf2a6d43 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
-75ee500566048dec528e7215389a4915 *NEWS.md
+8d5bd2aa43af078b1fc4b936ee062384 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
 8b9ced9a6c2729e415029bb63a8c9ba4 *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
@@ -423,7 +423,7 @@ fbd7f88db5310f4ea3360e5ed3cd5c0e *src/core/scg/scg_optimal_method.c
 1449a40ca4c724cd2a59db2d12fbdb51 *src/core/version.c
 3cec04064dc04a4dfcbe182b98f83488 *src/doc/issue_report_install.md
 85b76133af58d9e0d88a4cfb9d5191f8 *src/doc/issue_report_run.md
-1df7fbbeaf6918628382235760a75f94 *src/dummy.c
+8f106920b8a2f3f81e16eb824687c40d *src/dummy.cpp
 632d76fc35e6568fbd6b3428d4c5029e *src/f2c.h
 4e9c070f26286c6037ad240b1cc64f51 *src/include/igraph.h
 5149616c5368978897db8d88896e7d3f *src/include/igraph_adjlist.h
