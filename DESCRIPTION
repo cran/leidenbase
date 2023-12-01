@@ -7,7 +7,7 @@ Authors@R: c( person('Brent', 'Ewing', email = 'bge@uw.edu', role = c('aut', 'cr
               person('Tamás', 'Nepusz', role = 'ctb'),
               person('Szabolcs', 'Horvat', role = 'ctb'),
               person('Fabio', 'Zanini', role = 'ctb'))
-Version: 0.1.25
+Version: 0.1.27
 Description: An R to C/C++ interface that runs the Leiden community
     detection algorithm to find a basic partition (). It runs the
     equivalent of the 'leidenalg' find_partition() function, which is
@@ -35,7 +35,7 @@ BugReports: https://github.com/cole-trapnell-lab/leidenbase/issues
 NeedsCompilation: yes
 Maintainer: Brent Ewing <bge@uw.edu>
 VignetteBuilder: knitr
-Packaged: 2023-07-18 21:18:28 UTC; brent
+Packaged: 2023-11-30 20:52:53 UTC; brent
 Author: Brent Ewing [aut, cre],
   Vincent Traag [ctb],
   Gábor Csárdi [ctb],
@@ -43,4 +43,4 @@ Author: Brent Ewing [aut, cre],
   Szabolcs Horvat [ctb],
   Fabio Zanini [ctb]
 Repository: CRAN
-Date/Publication: 2023-07-19 09:10:02 UTC
+Date/Publication: 2023-12-01 09:50:05 UTC

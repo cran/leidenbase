@@ -1,8 +1,8 @@
-e78e1b55c8e30f6c33d27103cf2a6d43 *DESCRIPTION
+ecb8b6577934aab542592563d29e747a *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
-8d5bd2aa43af078b1fc4b936ee062384 *NEWS.md
+4488f661a903f0a10c46b61497545c68 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
-8b9ced9a6c2729e415029bb63a8c9ba4 *build/vignette.rds
+7982aacd2f2efc9dc4dface6db8ccf00 *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
 f89c7780070ec8f00ba8069a744208b5 *cleanup.win
 3a1bf751223ed6d19ec32cb01ba6c40c *configure
@@ -24,9 +24,9 @@ a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test08_file01.txt
 a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test09_file01.txt
 a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test10_file01.txt
 d3fb816bf4ce4814cf4c899e2944782b *man/leiden_find_partition.Rd
-ce1cad943c03f5ad7eca72292b36f4a5 *src/Makevars.in
-04acd9c812c30fd2c49bc353ad2dca82 *src/Makevars.ucrt
-c17428de093d8723557b1ffc1abdc697 *src/Makevars.win
+e3e238aa4d7c5abf3ddcb254f09c475b *src/Makevars.in
+966e71b9e1fecec3fba99d9c3e7f4764 *src/Makevars.ucrt
+55106dfe614425199dab55d3aa30d8a4 *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/config.h
 ed9754682235a2408cb82b195ff42f5d *src/config.h.in
 d08e71d2839e90e735b4e31ef6853b75 *src/core/centrality/betweenness.c
@@ -529,9 +529,9 @@ a2fb9bc3b8d7504bb9303fcb0ad63c6d *src/leidenalg/ResolutionParameterVertexPartiti
 3409ac29dea976bdb02810bc8624c615 *src/leidenalg/SignificanceVertexPartition.h
 45f4f20231f6e0d7e1310412a9ce410c *src/leidenalg/SurpriseVertexPartition.cpp
 5799d22c535af101a399f53c8fbb3d5e *src/leidenalg/SurpriseVertexPartition.h
-69551295985a22a92aa534e07363269c *src/leidenbase/leidenFindPartition.cpp
+ac62b6952065567ca0c5b4521b014847 *src/leidenbase/leidenFindPartition.cpp
 bd4ac93aff3daedea076dd25efd74ff5 *src/leidenbase/leidenFindPartition.h
-4c4e3d4c52252ab3b7bae46a0728ba6e *src/leidenbase/leidenFindPartitionR2C.cpp
+4fd7192434ad9341f6ea7ff7f38b4da6 *src/leidenbase/leidenFindPartitionR2C.cpp
 ae2b99c6930b9d78a067b9f304e4d021 *src/vendor/arpack/debug.h
 bc623b699b4c2d87ac2c4a0b82002276 *src/vendor/arpack/dgetv0.f
 ae7917a56c25a07b9860819bebf32f40 *src/vendor/arpack/dlaqrb.f
