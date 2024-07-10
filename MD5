@@ -1,8 +1,8 @@
-ecb8b6577934aab542592563d29e747a *DESCRIPTION
+320d8d18c627f5f5ef9ae4331f40ea02 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
-4488f661a903f0a10c46b61497545c68 *NEWS.md
+efca04a3aaca8d429b6c52bc698b4246 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
-7982aacd2f2efc9dc4dface6db8ccf00 *build/vignette.rds
+ca669c063aae0b5521ec6841a0493b94 *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
 f89c7780070ec8f00ba8069a744208b5 *cleanup.win
 3a1bf751223ed6d19ec32cb01ba6c40c *configure
@@ -24,8 +24,8 @@ a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test08_file01.txt
 a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test09_file01.txt
 a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test10_file01.txt
 d3fb816bf4ce4814cf4c899e2944782b *man/leiden_find_partition.Rd
-e3e238aa4d7c5abf3ddcb254f09c475b *src/Makevars.in
-966e71b9e1fecec3fba99d9c3e7f4764 *src/Makevars.ucrt
+bf24bf5a182d02886faa31d09bd18bd6 *src/Makevars.in
+06c28f72fe83b1d944054c75a5633adb *src/Makevars.ucrt
 55106dfe614425199dab55d3aa30d8a4 *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/config.h
 ed9754682235a2408cb82b195ff42f5d *src/config.h.in
@@ -128,7 +128,7 @@ c7784a7b81fc0020b87af8b9b3128f04 *src/core/core/buckets.h
 0e267b727def3b5e5d44b80a3cc7eb72 *src/core/core/cutheap.h
 2a785ab747ee2da29837dbd75de8de86 *src/core/core/dqueue.c
 0dc161f6dacfdcfcdbd1fbb9a98966d7 *src/core/core/dqueue.pmt
-b4aaaf02566b4218038db128ded6e484 *src/core/core/error.c
+acdea2da0c73ed5f4923f970e22ab171 *src/core/core/error.c
 5ae5cde80da3efe6fa00c9eb29413208 *src/core/core/estack.c
 2b40b41bde02fbe961a0860803f0f4bb *src/core/core/estack.h
 a9cd0fc35a7a7af895a4bc330307d9cf *src/core/core/exceptions.h
@@ -531,7 +531,7 @@ a2fb9bc3b8d7504bb9303fcb0ad63c6d *src/leidenalg/ResolutionParameterVertexPartiti
 5799d22c535af101a399f53c8fbb3d5e *src/leidenalg/SurpriseVertexPartition.h
 ac62b6952065567ca0c5b4521b014847 *src/leidenbase/leidenFindPartition.cpp
 bd4ac93aff3daedea076dd25efd74ff5 *src/leidenbase/leidenFindPartition.h
-4fd7192434ad9341f6ea7ff7f38b4da6 *src/leidenbase/leidenFindPartitionR2C.cpp
+9481aa2a9ca4cc294c57692225f8c8cc *src/leidenbase/leidenFindPartitionR2C.cpp
 ae2b99c6930b9d78a067b9f304e4d021 *src/vendor/arpack/debug.h
 bc623b699b4c2d87ac2c4a0b82002276 *src/vendor/arpack/dgetv0.f
 ae7917a56c25a07b9860819bebf32f40 *src/vendor/arpack/dlaqrb.f
@@ -666,7 +666,7 @@ fc6fc5c9aa5a5187e6a2b1643f72ed4a *src/vendor/simpleraytracer/unit_limiter.cpp
 cfb66084ea2bfc7648ab47ed1018e8a4 *src/vendor/uuid/COPYING
 c733862ac29e8bbd01a49b5ac7d4a780 *src/vendor/uuid/Makevars.in
 81a759562546aeea16d466fece227601 *src/vendor/uuid/Makevars.win
-3eb0f4eb28341a52ddd7790ad4c043ae *src/vendor/uuid/R.c
+176b02f45a3e8913f22bda719c080171 *src/vendor/uuid/R.c
 137be172372dd9bfeb50ed7aa2869b3e *src/vendor/uuid/clear.c
 d2b39a0b3d72632db235a9c6d36ef344 *src/vendor/uuid/compare.c
 76087d772af7d37cab53b1a56cf72ade *src/vendor/uuid/config.h.in
