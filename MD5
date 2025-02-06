@@ -1,8 +1,8 @@
-d823a370a24b9ed996519af97e703f5d *DESCRIPTION
+c2b311db76df72464a003a7aba597ae3 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 efca04a3aaca8d429b6c52bc698b4246 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
-8e7fb2816ab8e2040952113f573ba4d2 *build/vignette.rds
+d939d7656603be228a1fd4e9c851f4a8 *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
 f89c7780070ec8f00ba8069a744208b5 *cleanup.win
 3a1bf751223ed6d19ec32cb01ba6c40c *configure
@@ -25,7 +25,7 @@ a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test09_file01.txt
 a8f5fa41ddfc9d38665cf29a62fe7272 *inst/testdata/test10_file01.txt
 d3fb816bf4ce4814cf4c899e2944782b *man/leiden_find_partition.Rd
 bf24bf5a182d02886faa31d09bd18bd6 *src/Makevars.in
-06c28f72fe83b1d944054c75a5633adb *src/Makevars.ucrt
+a148abfe40a125201529b5c077df4462 *src/Makevars.ucrt
 55106dfe614425199dab55d3aa30d8a4 *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/config.h
 ed9754682235a2408cb82b195ff42f5d *src/config.h.in
