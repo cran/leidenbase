@@ -1,8 +1,8 @@
-c2b311db76df72464a003a7aba597ae3 *DESCRIPTION
+7dc665ce6cc8699c0a0d5b44bc48f790 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 efca04a3aaca8d429b6c52bc698b4246 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
-d939d7656603be228a1fd4e9c851f4a8 *build/vignette.rds
+00277eb326994b18b7dc17aabcb165df *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
 f89c7780070ec8f00ba8069a744208b5 *cleanup.win
 3a1bf751223ed6d19ec32cb01ba6c40c *configure
@@ -300,10 +300,12 @@ e3b87f650f7372df36aea1bc424241b2 *src/core/isomorphism/bliss/uintseqhash.cc
 2894aa7f3c118f8b55192e6ef809ac4b *src/core/isomorphism/bliss/uintseqhash.hh
 d9f154cc326105844a90dced77e03d9a *src/core/isomorphism/bliss/utils.cc
 5d7adc00c62ae75163ef4b4fc394488b *src/core/isomorphism/bliss/utils.hh
+44978ead734779fb67cca22e4b53f709 *src/core/isomorphism/foo.c
 01decfc494d34fda4495497916b6beae *src/core/isomorphism/isoclasses.c
 e91bb14bf8d1f312602cc841eb212b5b *src/core/isomorphism/isoclasses.h
 f46daf3ec120c4c84a984fa8dcb70ce2 *src/core/isomorphism/isomorphism_misc.c
-5153843e7b6d3ffa7fde14c0451a08dc *src/core/isomorphism/lad.c
+a7d8b74d4bcef8c6819db90199944452 *src/core/isomorphism/lad.c
+5153843e7b6d3ffa7fde14c0451a08dc *src/core/isomorphism/lad.c.org.20250205
 33b14a143445d22c5c784567dd3fcde3 *src/core/isomorphism/queries.c
 1eed9416425b1fd96c2358e2f152f292 *src/core/isomorphism/vf2.c
 bea727310bd0e5ad9e34a4ac344ab04a *src/core/layout/circular.c
