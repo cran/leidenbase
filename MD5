@@ -1,8 +1,8 @@
-6e78e374147d909aaeb472e6283a5d5b *DESCRIPTION
+b5a845fd964ae77a4e93f307389ba397 *DESCRIPTION
 8a259a047d89e88d6bcfa9d0a6d2d965 *NAMESPACE
 efca04a3aaca8d429b6c52bc698b4246 *NEWS.md
 3bf6487a053b083d3729752ae5a55471 *R/leidenbase.R
-ba234a3aca1f6a9b58b9b1601e664f99 *build/vignette.rds
+5dd5eaaa9d9b0839aa397ff9dc5b0cd9 *build/vignette.rds
 f89c7780070ec8f00ba8069a744208b5 *cleanup
 f89c7780070ec8f00ba8069a744208b5 *cleanup.win
 89a06fa4a681bd357331529bb96d986c *configure
@@ -537,7 +537,7 @@ bd4ac93aff3daedea076dd25efd74ff5 *src/leidenbase/leidenFindPartition.h
 ae2b99c6930b9d78a067b9f304e4d021 *src/vendor/arpack/debug.h
 bc623b699b4c2d87ac2c4a0b82002276 *src/vendor/arpack/dgetv0.f
 ae7917a56c25a07b9860819bebf32f40 *src/vendor/arpack/dlaqrb.f
-e2a779cf6995db8c8f7decb5f5a34865 *src/vendor/arpack/dmout.f
+555b93ecb979cbd1b0741f8a21914671 *src/vendor/arpack/dmout.f
 0e11f9b76a7e46477224bebd83080f25 *src/vendor/arpack/dnaitr.f
 7d4f11d47644fbbf52ed09e58e174dc4 *src/vendor/arpack/dnapps.f
 22de713abf558787ed9c5b33eb4b83d4 *src/vendor/arpack/dnaup2.f
@@ -560,7 +560,7 @@ a85a6c40eddf62d7ea57f2af18e15d57 *src/vendor/arpack/dsortc.f
 d4ead7e7ae03b16c06bc2eee64bc99fd *src/vendor/arpack/dstatn.f
 40dc3cb9ded24c012fd5810e6175d7f9 *src/vendor/arpack/dstats.f
 de4792cfaab6cdda8d557902c2310fcc *src/vendor/arpack/dstqrb.f
-059e044417ad33569e5a472857c4cc03 *src/vendor/arpack/dvout.f
+5900e3291b0f18651996a05caa8ed210 *src/vendor/arpack/dvout.f
 bcb2b6552d1d754735cf3d8f6bee79c8 *src/vendor/arpack/ivout.f
 ae9869d33e820c063b2de45a73f449c9 *src/vendor/arpack/second.f
 b5163c86a9a4ff980ad7a02f9303d2b7 *src/vendor/arpack/stat.h
